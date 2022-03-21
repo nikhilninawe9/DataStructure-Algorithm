@@ -77,8 +77,8 @@ public class SinglyLinkedList {
 		}
 	}
 
-	/* Delete the last node */
-	public ListNode deleteLastNode() {
+	/* Delete the first node */
+	public ListNode deleteFirstNode() {
 		if (head == null) {
 			return null;
 		} else {
@@ -87,7 +87,21 @@ public class SinglyLinkedList {
 			node.next = null;
 			return node;
 		}
+	}
 
+	/* Delete the last node */
+	public ListNode deleteLastNode() {
+		if (head == null || head.next == null) {
+			return head;
+		}
+		ListNode current = head;
+		ListNode previous = null;
+		while (current.next != null) {
+			previous = current;
+			current = current.next;
+		}
+		previous.next = null;
+		return current;
 	}
 
 	public static void main(String[] args) {
@@ -111,8 +125,9 @@ public class SinglyLinkedList {
 		sl1.insertLast(22);
 		sl1.insertNodeAtPosition(786, 3);
 		sl1.insertNodeAtPosition(999, 6);
-		sl1.deleteLastNode();
+		System.out.println(sl1.deleteFirstNode().data);
 		System.out.println(sl1.deleteLastNode().data);
+		sl1.display();
 
 	}
 
