@@ -5,8 +5,8 @@ public class SinglyLinkedList {
 	private ListNode head;
 
 	private static class ListNode {
-		private int data;// generic but taken here as int
-		private ListNode next; // pointer to the next node
+		private int data; /* generic but taken here as int */
+		private ListNode next; /* pointer to the next node */
 
 		public ListNode(int data) {
 			this.data = data;
@@ -36,6 +36,48 @@ public class SinglyLinkedList {
 		return counter;
 	}
 
+	/* Inserting the node at the beginning */
+	public void insertFirst(int value) {
+		ListNode node = new ListNode(value);
+		node.next = head;
+		head = node;
+	}
+
+	/* Inserting the node at the end */
+	public void insertLast(int value) {
+		ListNode node = new ListNode(value);
+		if (head == null) {
+			head = node;
+			return;
+		} else {
+			ListNode current = head;
+			while (current.next != null) {
+				current = current.next;
+			}
+			current.next = node;
+		}
+	}
+
+	/* Inserting the node at given position */
+	public void insertNodeAtPosition(int data, int position) {
+		ListNode node = new ListNode(data);
+		if (position == 1) {
+			node.next = head;
+			head = node;
+		} else {
+			ListNode previous = head;
+			int count = 1;
+			while (count < position - 1) {
+				previous = previous.next;
+				count++;
+			}
+			ListNode current = previous.next;
+			node.next = current;
+			previous.next = node;
+		}
+
+	}
+
 	public static void main(String[] args) {
 		/* 4 listnodes has been created */
 		SinglyLinkedList sl1 = new SinglyLinkedList();
@@ -51,7 +93,13 @@ public class SinglyLinkedList {
 		/******************************************************************************/
 		/* Execution of methods */
 		// sl1.display();
-		sl1.length();
+		// sl1.length();
+		sl1.insertFirst(55);
+		sl1.insertLast(98);
+		sl1.insertLast(22);
+		sl1.insertNodeAtPosition(786, 3);
+		sl1.insertNodeAtPosition(999, 6);
+		sl1.display();
 	}
 
 }
