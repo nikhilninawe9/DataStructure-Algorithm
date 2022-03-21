@@ -18,10 +18,22 @@ public class SinglyLinkedList {
 	public void display() {
 		ListNode current = head;
 		while (current != null) {
-			System.out.print(current.data + " -->");
+			System.out.print(current.data + ",");
 			current = current.next;
 		}
 		System.out.print("null");
+	}
+
+	/* Count the length of singly linked list */
+	public int length() {
+		int counter = 0;
+		ListNode current = head;
+		while (current != null) {
+			counter++;
+			current = current.next;
+		}
+		System.out.println("Length of SinglyLinkedList is " + counter);
+		return counter;
 	}
 
 	public static void main(String[] args) {
@@ -31,12 +43,15 @@ public class SinglyLinkedList {
 		ListNode second = new ListNode(1);
 		ListNode third = new ListNode(8);
 		ListNode fourth = new ListNode(11);
-
+		/******************************************************************************/
 		/* connecting 4 listnodes forming chain and creating singly linked list. */
 		sl1.head.next = second;
 		second.next = third;
 		third.next = fourth;
-		sl1.display();
+		/******************************************************************************/
+		/* Execution of methods */
+		// sl1.display();
+		sl1.length();
 	}
 
 }
