@@ -75,6 +75,18 @@ public class SinglyLinkedList {
 			node.next = current;
 			previous.next = node;
 		}
+	}
+
+	/* Delete the last node */
+	public ListNode deleteLastNode() {
+		if (head == null) {
+			return null;
+		} else {
+			ListNode node = head;
+			head = head.next;
+			node.next = null;
+			return node;
+		}
 
 	}
 
@@ -99,7 +111,9 @@ public class SinglyLinkedList {
 		sl1.insertLast(22);
 		sl1.insertNodeAtPosition(786, 3);
 		sl1.insertNodeAtPosition(999, 6);
-		sl1.display();
+		sl1.deleteLastNode();
+		System.out.println(sl1.deleteLastNode().data);
+
 	}
 
 }
